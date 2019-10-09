@@ -5,6 +5,7 @@ import (
 	"github.com/gobuffalo/envy"
 	forcessl "github.com/gobuffalo/mw-forcessl"
 	paramlogger "github.com/gobuffalo/mw-paramlogger"
+	"github.com/gobuffalo/x/sessions"
 	"github.com/unrolled/secure"
 
 	csrf "github.com/gobuffalo/mw-csrf"
@@ -34,8 +35,9 @@ var T *i18n.Translator
 func App() *buffalo.App {
 	if app == nil {
 		app = buffalo.New(buffalo.Options{
-			Env:         ENV,
-			SessionName: "_cookie_monster_session",
+			Env:          ENV,
+			SessionStore: sessions.Null{},
+			SessionName:  "_cookie_monster_session",
 		})
 
 		// Automatically redirect to SSL
@@ -51,7 +53,7 @@ func App() *buffalo.App {
 		// Setup and use translations:
 		app.Use(translations())
 
-		app.GET("/", HomeHandler)
+		app.GET("/", CookieHandler)
 
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}

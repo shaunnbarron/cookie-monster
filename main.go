@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	"cookie_monster/actions"
+	"cookie-monster/actions"
 )
 
 // main is the starting point for your Buffalo application.

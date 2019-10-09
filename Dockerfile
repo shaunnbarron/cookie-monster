@@ -2,8 +2,8 @@
 # https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 FROM gobuffalo/buffalo:v0.14.10 as builder
 
-RUN mkdir -p $GOPATH/src/cookie_monster
-WORKDIR $GOPATH/src/cookie_monster
+RUN mkdir -p $GOPATH/src/cookie-monster
+WORKDIR $GOPATH/src/cookie-monster
 
 # this will cache the npm install step, unless package.json changes
 ADD package.json .

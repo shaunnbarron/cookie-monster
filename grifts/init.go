@@ -1,7 +1,7 @@
 package grifts
 
 import (
-	"cookie_monster/actions"
+	"cookie-monster/actions"
 
 	"github.com/gobuffalo/buffalo"
 )
